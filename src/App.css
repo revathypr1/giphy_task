@@ -1,0 +1,46 @@
+body {
+  background-color: #000;
+}
+
+.gifs {
+  
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.gif {
+  padding: 0 2px;
+  width: 33.33%;
+}
+
+.loader {
+  color: blue;
+  
+}
+.loader i{
+  height: 100%;
+}
+
+
+
+.searchBar{
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+form.search-form input[type="text"]{
+    width: 85%;
+}
+
+img{
+  display: block;
+  width: 100%;
+}
+.error{
+  color: red;
+  font-size: 15px;
+}
