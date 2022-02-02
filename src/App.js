@@ -4,6 +4,7 @@ import Login from "../src/compoents/Login"
 import "./App.css";
 import Loader from "./compoents/Loader";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import PrivateRoute from "./compoents/PrivateRoute";
 
 const App = () => {
   return (
@@ -11,7 +12,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route path="/" exact component={Login} />
-        <Route path="/giphy"  component={Giphy} />
+        <PrivateRoute path="/giphy"  component={Giphy} />
         <Route path="/Loader"  component={Loader} />
       </Switch>
     </Router>
