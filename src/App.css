@@ -44,3 +44,8 @@ img{
   color: red;
   font-size: 15px;
 }
+.logout{
+  margin-left: 86%;
+    margin-top: -3%;
+    background-color:#007bff;
+}

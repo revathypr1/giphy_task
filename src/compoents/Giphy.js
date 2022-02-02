@@ -2,11 +2,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "./Loader";
 import { computeHeadingLevel, render } from "@testing-library/react";
+import { Link, useHistory } from "react-router-dom";
+
 
 
 const Giphy = () => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
+
+  const history = useHistory()
+
   // const [IsLoading, setIsLoading] = useState(true);
   const [IsError, setIsError] = useState(false);
   console.log("giphy loading");
@@ -79,6 +84,12 @@ const Giphy = () => {
     // setIsLoading(false);
   };
 
+  const logOut = (e) =>{
+    e.preventDefault();
+    localStorage.clear();
+    history.push("/")
+  }
+
   return (
     <>
       <div className="m-2">
@@ -98,7 +109,15 @@ const Giphy = () => {
           >
             Go
           </button>
-        </form>
+        {/* </form> */}
+        <button
+          onClick={logOut}
+            className="btn btn-primary mx-2 "
+            className="logout"
+          >
+            Logout
+            </button>
+          </form>
         <div className="container gifs">
           {renderGifs()}
         </div>
