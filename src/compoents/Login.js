@@ -1,51 +1,53 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import bg_1 from "../assets/images/catgiph.gif";
+import { BASE_URL } from "../axiosConfig";
+import axios from "axios";
 
 function Login() {
-  const personUser = "admin";
-  const personPassword = "admin@123";
-
-  const [userName, setUserName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [credentials, setCredentials] = useState([]);
+  const [message, setmessage] = useState("");
 
-  const LOCAL_STORAGE_KEY = ["username", "password"];
+  const history = useHistory()
 
-  const loginCheck = (e) => {
-    e.preventDefault();
-    if (userName === personUser && password === personPassword) {
-      console.log("success");
-      window.location.href = "/giphy";
-    } else {
-      alert("Login Unsuccessfull");
-    }
-  };
+  const handleSubmit = (e) =>{
+    e.preventDefault()
+    axios
+    .post(`${BASE_URL}/auth/token/`,{username,password})
+    .then((res)=>{
+      // console.log(res.data);
+      let data = res.data; 
+      console.log(data);
+      localStorage.setItem("user_data",JSON.stringify(data))
+      history.push('/giphy')
 
+    })
+    .catch((error)=>{
+      console.log(error);
 
+    })
+    
+  }
 
   return (
     <Container>
       <LoginBox>
         <Top>
-          <LogoContainer>
-            
-          </LogoContainer>
+          <LogoContainer></LogoContainer>
           <Title>Login</Title>
         </Top>
         <CredentialsForm
-          onSubmit={(e) => {
-            loginCheck(e);
-          }}
+          onSubmit={handleSubmit}
         >
           <Credential>
             <Label for="username">Username</Label>
             <Input
               name="username"
               type="text"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </Credential>
           <Credential>
