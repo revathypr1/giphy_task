@@ -64,7 +64,7 @@ function Login() {
       </LoginBox>
       <Goto>
         Don't have an account yet,
-        <Link to="/">
+        <Link to="/Signup">
           <Span className="signup"> click here to Sign up..!</Span>
         </Link>
       </Goto>

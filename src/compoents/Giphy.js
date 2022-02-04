@@ -5,7 +5,6 @@ import { computeHeadingLevel, render } from "@testing-library/react";
 import { Link, useHistory } from "react-router-dom";
 
 
-
 const Giphy = () => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
